@@ -1,0 +1,22 @@
+{% extends 'lawyer/base_lawyer.html' %}
+{% block name %}
+    <h1 class="nb=8"> Фирма</h1>
+    <div class="card">
+        <div class="card-header">
+            <p>Компания</p>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ cantor.name }}</h5>
+            <p class="card-text">{{ cantor.body }}.</p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block contect %}
+    <h1 class="nb=8"> В Конторе "{{ cantor.name|title }}" работают:  </h1>
+     {% for lawyer in cantor.lawyers.all  %}
+        {% include 'lawyer/invludes/lawyer_timetable.html' %}
+{% endfor %}
+   <a href="{% url 'cantor_create_url' %}" class="btn btn-light">создать новый?</a>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'lawyer/base_lawyer.html' %}
+
+{% block poisk %}
+  <form class="form-inline my-2 my-lg-0" action="{% url 'cantors_list_url'%}">
+      <input class="form-control mr-sm-2" type="search" placeholder="Ставь" aria-label="Search" name="search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Класс</button>
+    </form>
+
+{% endblock %}
+{% block contect %}
+<h1 class="nb-5">Таблица фирм</h1>
+    {% for cantor in cantors   %}
+{{ cantor.name }}
+        <div class="card">
+            <div class="card-header">
+            <p>Фирма</p>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ cantor.name }}</h5>
+                <p class="card-text">{{ cantor.body }}.</p>
+                <a href="{{ cantor.get_absolute_url}}" class="btn btn-light">Просмотр </a>
+                <a href="{{ cantor.get_abs_url }}" class="btn btn-light">Редактировать</a>
+                <a href="{{ cantor.get_delete_url }}" class="btn btn-light">Удалить</a>
+
+            </div>
+        <div class="card-footer text-muted">
+        <p>Клиенты</p>
+        {%  for klient in cantor.customers %}
+            <a href="{{ klient.get_absolute_url }}">{{klient.name}}</a>
+        {% endfor %}
+    </div>
+        </div>
+
+    {% endfor %}
+{% endblock %}

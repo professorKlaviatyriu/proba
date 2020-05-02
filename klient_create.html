@@ -1,0 +1,26 @@
+{% extends 'lawyer/base_lawyer.html' %}
+{% block name %}
+{{ block.super }}
+{% endblock %}
+{% block contect %}
+
+    <form action="{% url 'klient_create_url' %}" method="post">
+
+    {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+            {% if field.errors %}
+                <div class="alert alert-danger">
+                {{ field.errors }}
+                </div>
+            {% endif %}
+            {{ field.label }}
+            {{ field }}
+            </div>
+        {% endfor %}
+
+    <button type="submit" class="bt = 5 btn btn-primary">Создать клиента</button>
+    </form>
+
+
+{% endblock %}

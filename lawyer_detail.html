@@ -1,0 +1,15 @@
+{% extends 'lawyer/base_lawyer.html' %}
+
+{%block name %}
+
+
+
+{% endblock %}
+
+{% block contect %}
+<h1 class="nb-2" >Таблица юристов </h1>
+<h1>{{ lawyer.name }}</h1>
+<p>{{ lawyer.body }}</p>
+    <a href="{% url 'lawyer_create_url' %}" class="btn btn-light">создать новый?</a>
+
+{% endblock %}

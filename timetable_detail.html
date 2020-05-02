@@ -1,0 +1,11 @@
+{% extends 'lawyer/base_lawyer.html' %}
+{%block name %}
+    {{ block.super }}
+{% endblock %}
+{% block contect %}
+    <h1 class="nb-5">Юрист работает в "{{ timetable.name|title }}" : </h1>
+    {% for lawyer in timetable.lawyers.all  %}
+        {% include 'lawyer/invludes/lawyer_timetable.html' %}
+
+    {% endfor %}
+{% endblock %}

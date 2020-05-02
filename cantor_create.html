@@ -1,0 +1,22 @@
+{% extends 'lawyer/base_lawyer.html' %}
+{% block name %}
+
+{% endblock %}
+{% block contect %}
+
+       <form action="{% url 'cantor_create_url' %}" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group" >
+            {% if field.errors %}
+                <div class="alert alert-danger" >
+                {{ field.errors }}
+                </div>
+            {% endif %}
+            {{ field.label }}
+            {{ field }}
+            </div>>
+        {% endfor %}
+        <button type="submit" class="bt = 5 btn btn-primary">Создать фирму</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'lawyer/base_lawyer.html' %}
+{%block name %}
+
+
+
+{% endblock %}
+
+{% block contect %}
+    <p class="nb-5">Рабочие дни | Как?</p>
+    {% for timetable in timetables %}
+        <h3>  <a  href="{{  timetable.get_absolute_url }}">{{ timetable.name }} |  {{ timetable.body }}</a></h3>
+        <a href="{% url 'timetable_update_url' slug=timetable.slug %}" class="btn btn-light">Редактировать</a>
+        <a href="{% url 'timetable_delete_url' slug=timetable.slug %}" class="btn btn-light">Удалить</a>
+
+    {% endfor %}
+
+
+
+  <a href="{% url 'timetable_create_url'  %}" class="btn btn-light">добавить?</a>
+{% endblock %}

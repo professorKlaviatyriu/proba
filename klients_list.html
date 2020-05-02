@@ -1,0 +1,24 @@
+{% extends 'lawyer/base_lawyer.html' %}
+{% block name %}
+
+{% endblock %}
+{% block contect %}
+<h1 class="nb-5">ТАБЛИЦА КЛИЕНТОВ</h1>
+    {% for klient in klients   %}
+{{ klient.name }}
+        <div class="card">
+            <div class="card-header">
+            <p>Клиенты</p>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ klient.name }}</h5>
+                <p class="card-text">{{ klient.body }}.</p>
+                <a href="{% url 'cantors_list_url' %}" class="btn btn-light">Назад </a>
+                <a href="{{ klient.get_absolute_url}}" class="btn btn-light">Просмотр </a>
+                <a href="{{ klient.get_abs_url }}" class="btn btn-light">Редактировать</a>
+                <a href="{{ klient.get_delete_url }}" class="btn btn-light">Удалить</a>
+            </div>
+        </div>
+
+    {% endfor %}
+{% endblock %}

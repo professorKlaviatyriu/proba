@@ -1,0 +1,18 @@
+{% extends 'lawyer/base_lawyer.html' %}
+
+{% block name %}
+
+{% endblock %}
+
+{% block contect %}
+
+<form action="{{ lawyer.get_delete_url }}" method="post">
+{% csrf_token %}
+<h1> А вы уверены что хотите удалить "{{ lawyer.name }}" ?</h1>
+
+<a href="{{lawyer.get_absolute_url}}">Назад</a>
+<button type="submit" name="button"  class="btn btn-danger"> Удалить </button>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+<div class="card">
+    <div class="card-header">
+        <p>график</p>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{ lawyer.name }}</h5>
+        <p class="card-text">{{ lawyer.body }}.</p>
+        <a href="{{ lawyer.get_absolute_url }}" class="btn btn-light">Читать</a>
+         <a href="{{ lawyer.get_abs_url }}" class="btn btn-light">Редактировать</a>
+        <a href="{{ lawyer.get_delete_url }}" class="btn btn-light">Удалить</a>
+    </div>
+    <div class="card-footer text-muted">
+        <p>Рабочие дни</p>
+        {%  for timetable in lawyer.timetables.all%}
+            <a href="{{ timetable.get_absolute_url }}">{{ timetable.name }}</a>
+        {% endfor %}
+    </div>
+</div>
