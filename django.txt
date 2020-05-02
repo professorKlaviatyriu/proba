@@ -1,0 +1,63 @@
+Привет! Я Студенческий отряд проводников 'Ассорти' в НГТУ Им. Алексеева. У меня есть к тебе предложение от которого ты, конечно, можешь отказаться, но лучше не стоит))) Если ты хочешь весело провести лето, побывать на Черном и Белом море всего за одну неделю и неплохо ЗАРАБОТАТЬ - Мы предлагаем тебе присоединиться к нам! Наш отряд работает от разных городов: Москвы, Питера, Адлера и других! Если тебя это заинтересовало, то подписывайся на нашу группу и заполняй анкету https://vk.com/sop_assorti?w=app5619682_-102742550. Если у тебя появились вопросы, то ты так же можешь мне написать и я телепатически с тобой свяжусь) НУ ЧТО, ТЫ С НАМИ?
+Ps. Собрание 24 числа в 18.00 как обычно в 5115!
+
+
+Внимание! Идет набор в Студентческий отряд проводников "Ассорти"
+Кто хочет к нам присоединится приходите  24 сентебря в 18:00 в Ауд 5115. Всех ждем)  
+
+create table lawyer(
+	id integer not null primary key,
+	name text,
+	specialization text	,
+	cantorid integer not null References cantor(id) ON DELETE CASCADE
+	
+);
+INSERT INTO lawyer
+VALUES (1, 'lawyer1', 'kadastr'),
+ (2, 'lawyer2', 'syd');
+ 
+create table lawyer_timetable(
+	lawyerid integer not null References lawyer(id) ON DELETE CASCADE,
+	timetableid integer not null References timetable(id)ON DELETE CASCADE
+	
+	
+);
+			   
+create table timetable(
+	id integer not null primary key,
+	wheree text,
+	how integer not null
+	
+
+);
+INSERT INTO timetable
+VALUES (1,'na_meste', 2),
+(2,'office', 6);
+
+create table cantor(
+	id integer not null primary key,
+	name text,
+	cauntry text 	
+);
+ 
+INSERT INTO cantor
+VALUES (1,  'sibur', 'russia' ),
+(2,  'poklo', 'china' );
+
+create table service(
+	id integer not null primary key,
+	service text,
+	price text,
+	cantor_id integer not null  references cantor(id) ON DELETE CASCADE
+);
+INSERT INTO service
+VALUES (1, 'zachita', '17 dollor'),
+(2, 'ataka', '25 dollor');
+
+
+
+
+
+from lawyer.models import Lawyer
+p = Lawyer(name='Sasha', slug='new_slug', body= 'Very very very well men ')
+p.save()
